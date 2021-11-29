@@ -41,7 +41,7 @@ class CustomAdapter(private val context: Context, private val mList: List<ItemsV
 
             context.startActivity(intent)
 
-            Log.d("Item", ItemsViewModel.text)
+            //Log.d("Item", ItemsViewModel.text)
         }
     }
 
