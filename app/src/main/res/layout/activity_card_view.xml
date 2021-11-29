@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/cardViewImageButton"
             android:layout_width="match_parent"
             android:layout_height="350dp"
             app:srcCompat="@drawable/ic_launcher_foreground" />

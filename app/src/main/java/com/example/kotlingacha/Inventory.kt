@@ -1,0 +1,8 @@
+package com.example.kotlingacha
+
+class Inventory(val image: Int, val name: String, val description: String) {
+    companion object{
+        //Static list for the game inventory
+        val inventoryData = ArrayList<Inventory>();
+    }
+}
