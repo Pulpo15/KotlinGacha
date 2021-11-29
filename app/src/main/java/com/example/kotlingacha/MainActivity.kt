@@ -1,5 +1,6 @@
 package com.example.kotlingacha
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,10 +27,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         // This will pass the ArrayList to our Adapter
-        val adapter = CustomAdapter(data)
+        val adapter = CustomAdapter(this, data)
 
         // Setting the Adapter with the recyclerview
         recyclerview.adapter = adapter
 
+
     }
+
 }
