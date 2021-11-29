@@ -13,19 +13,18 @@
         android:layout_gravity="center"
         android:orientation="vertical">
 
-        <ImageButton
+        <ImageView
             android:id="@+id/imageview"
-            android:layout_width="200dp"
-            android:layout_height="200dp" />
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="15dp"
             android:text="Item"
-            android:textAlignment="center"
             android:textSize="20sp"
             android:textStyle="bold" />
     </LinearLayout>
