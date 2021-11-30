@@ -1,4 +1,4 @@
-package com.example.kotlingacha
+package com.example.kotlingacha.activity
 
 import android.content.Context
 import android.content.Intent
@@ -7,7 +7,10 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.gson.Gson
+import com.example.kotlingacha.adapter.CustomAdapter
+import com.example.kotlingacha.obj.Inventory
+import com.example.kotlingacha.obj.ItemsViewModel
+import com.example.kotlingacha.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,17 +22,16 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-
         // Button to access Gacha activity
         findViewById<Button>(R.id.gachaButton).setOnClickListener {
             val intent = Intent(this, GachaActivity::class.java)
             startActivity(intent)
         }
 
-        // getting the recyclerview by its id
+        // Getting the recyclerview by its id
         val recyclerview = findViewById<RecyclerView>(R.id.recyclerview)
 
-        // this creates a vertical layout Manager
+        // This creates a vertical layout Manager
         recyclerview.layoutManager = LinearLayoutManager(this)
 
         // ArrayList of class ItemsViewModel

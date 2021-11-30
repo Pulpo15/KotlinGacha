@@ -1,12 +1,10 @@
-package com.example.kotlingacha
+package com.example.kotlingacha.activity
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import android.widget.ImageButton
-import android.widget.ImageView
 import android.widget.TextView
+import com.example.kotlingacha.R
 
 class CardViewActivity : AppCompatActivity() {
 
@@ -20,6 +18,7 @@ class CardViewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_card_view)
 
+        // Get values from MainActivity
         val image:Int = intent.getIntExtra(IMAGE, 0)
         val name:String = intent.getStringExtra(NAME).toString()
         val description:String = intent.getStringExtra(DESCRIPTION).toString()
@@ -28,10 +27,9 @@ class CardViewActivity : AppCompatActivity() {
         val cardViewImageButton: ImageButton = findViewById(R.id.cardViewImageButton)
         val cardDescriptionTextView: TextView = findViewById(R.id.cardDescriptionTextView)
 
+        // Assign values from MainActivity
         cardName.text = name
         cardViewImageButton.setImageResource(image)
         cardDescriptionTextView.text = description
-
-        //val adapter = CardViewAdapter(this, image, name)
     }
 }

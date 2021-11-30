@@ -1,4 +1,4 @@
-package com.example.kotlingacha
+package com.example.kotlingacha.obj
 
 class Inventory(val image: Int, val name: String, val description: String) {
     companion object{

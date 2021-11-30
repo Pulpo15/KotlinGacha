@@ -10,11 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Kotlingacha">
         <activity
-            android:name=".GachaActivity"
+            android:name=".activity.GachaActivity"
             android:exported="false" />
-        <activity android:name=".CardViewActivity" />
+        <activity android:name=".activity.CardViewActivity" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

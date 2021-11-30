@@ -5,7 +5,7 @@
     android:id="@+id/gachaBackButton"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GachaActivity">
+    tools:context=".activity.GachaActivity">
 
     <Button
         android:id="@+id/getCardButton"

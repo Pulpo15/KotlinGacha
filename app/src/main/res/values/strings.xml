@@ -14,4 +14,28 @@
     <string name="clear_memory">Clear Memory</string>
     <string name="gacha">Gacha</string>
     <string name="wip">WIP</string>
+    <string name="turtwigdescription">Turtwig es el Pokémon Hojita. Los Turtwig son de tipo planta y de color verde.
+La concha de su espalda es de tierra y se endurece cuando bebe agua. Vive cerca de los lagos. Realiza la fotosíntesis para obtener oxígeno. Si tiene sed, las hojas de la cabeza se marchitan.</string>
+    <string name="grotledescription">Grotle es el Pokémon Arboleda. Los Grotle son de tipo planta y de color verde.
+Vive en los bosques cerca del agua. Por el día, sale a que les dé el sol a las plantas de su espalda. Su concha es tierra dura. Algunos Pokémon picotean las bayas que crecen en su espalda.</string>
+    <string name="torterradescription">Torterra es el Pokémon Continente. Los Torterra son de tipos planta tierra y de color verde.
+Algunos Pokémon pequeños se juntan en su espalda para hacer sus nidos. Muchos confunden los grupos de Torterra que migran en busca de agua con bosques vivientes.</string>
+    <string name="chimchardescrption">Chimchar es el Pokémon Chimpancé. Los Chimchar son de tipo fuego y de color marrón.
+Escala acantilados escarpados con agilidad. Vive en las montañas y su fuego se apaga cuando duerme. El gas de su panza alimenta el fuego de su parte trasera, que ni la lluvia puede extinguir.</string>
+    <string name="monfernodescription">Monferno es el Pokémon Juguetón. Los Monferno son de tipos fuego lucha y de color marrón.
+Intimida a sus enemigos desplegando el fuego de su cola para parecer más grande. Utiliza techos y paredes para lanzar ataques aéreos. También emplea su cola ígnea como arma.</string>
+    <string name="infernapedescription">Infernape es el Pokémon Llama. Los Infernape son de tipos fuego lucha y de color marrón.
+Utiliza un tipo especial de artes marciales con todos sus miembros. Su fuego nunca se extingue. Su corona de fuego demuestra su naturaleza ígnea. Nadie le gana en velocidad.</string>
+    <string name="piplupdescription">Piplup es el Pokémon Pingüino. Los Piplup son de tipo agua y de color azul.
+Es muy orgulloso, por lo que odia aceptar comida de la gente. Su grueso plumón le protege del frío. Vive en las costas de los países nórdicos. Es un gran nadador y puede bucear más de 10 minutos.</string>
+    <string name="prinplupdescription">Prinplup es el Pokémon Pingüino. Los Prinplup son de tipo agua y de color azul.
+Vive solo, alejado de los demás. Cada uno piensa que es el más importante. Los golpes de sus alas pueden partir los árboles más gruesos. Busca sus presas en aguas heladas.</string>
+    <string name="empoleondescrpition">Empoleon es el Pokémon Emperador. Los Empoleon son de tipos agua acero y de color azul.
+Los tres cuernos de su pico son muestra de su fuerza. El líder tiene los cuernos más grandes. Nada tan rápido como un fueraborda. Con los afiliados bordes de sus alas puede cortar el hielo.</string>
+    <string name="starlydescription">Starly es el Pokémon Estornino. Los Starly son de tipos normal volador y de color marrón.
+Viaja en grandes bandadas. Aunque es pequeño, agita las alas con gran fuerza. Suele volar en bandadas, pero pasa desapercibido cuando está solo. Chilla de forma estridente.</string>
+    <string name="staraviadescription">Staravia es el Pokémon Estornino. Los Staravia son de tipos normal volador y de color marrón.
+Vuela por bosques y campos en busca de Pokémon de tipo Bicho. Siempre va en bandadas. Vive en bosques y campos. Si dos bandadas se encuentran, pelean por el territorio.</string>
+    <string name="staraptordescription">Staraptor es el Pokémon Depredador. Los Staraptor son de tipos normal volador y de color marrón.
+Tiene un carácter salvaje. No duda en desafiar a rivales mucho mayores. Sus alas y sus patas son muy fuertes. Puede llevarse volando Pokémon pequeños.</string>
 </resources>
