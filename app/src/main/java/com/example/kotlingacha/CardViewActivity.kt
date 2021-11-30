@@ -13,26 +13,25 @@ class CardViewActivity : AppCompatActivity() {
     companion object{
         const val IMAGE = "IMAGE"
         const val NAME = "NAME"
+        const val DESCRIPTION = "DESCRIPTION"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_card_view)
 
-        findViewById<Button>(R.id.backButton).setOnClickListener{
-            val intent = Intent(this, MainActivity::class.java)
-
-            startActivity(intent)
-        }
-
-        val image:String = intent.getStringExtra(IMAGE).toString()
+        val image:Int = intent.getIntExtra(IMAGE, 0)
         val name:String = intent.getStringExtra(NAME).toString()
+        val description:String = intent.getStringExtra(DESCRIPTION).toString()
 
-        val cardName: TextView = findViewById<TextView>(R.id.cardNameTextView)
-        //val cardViewImageButton: ImageButton = findViewById<ImageButton>(R.id.cardImageButton)
+        val cardName: TextView = findViewById(R.id.cardNameTextView)
+        val cardViewImageButton: ImageButton = findViewById(R.id.cardViewImageButton)
+        val cardDescriptionTextView: TextView = findViewById(R.id.cardDescriptionTextView)
 
         cardName.text = name
+        cardViewImageButton.setImageResource(image)
+        cardDescriptionTextView.text = description
 
-        val adapter = CardViewAdapter(this, image, name)
+        //val adapter = CardViewAdapter(this, image, name)
     }
 }

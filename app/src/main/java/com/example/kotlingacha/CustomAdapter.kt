@@ -37,7 +37,8 @@ class CustomAdapter(private val context: Context, private val mList: List<ItemsV
             val intent = Intent(context, CardViewActivity::class.java)
 
             intent.putExtra(CardViewActivity.NAME, holder.textView.text)
-            intent.putExtra(CardViewActivity.IMAGE, "asd")
+            intent.putExtra(CardViewActivity.IMAGE, ItemsViewModel.image)
+            intent.putExtra(CardViewActivity.DESCRIPTION, ItemsViewModel.description)
 
             context.startActivity(intent)
 
