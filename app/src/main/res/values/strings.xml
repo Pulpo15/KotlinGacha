@@ -39,4 +39,8 @@ Vuela por bosques y campos en busca de Pokémon de tipo Bicho. Siempre va en ban
     <string name="staraptordescription">Staraptor es el Pokémon Depredador. Los Staraptor son de tipos normal volador y de color marrón.
 Tiene un carácter salvaje. No duda en desafiar a rivales mucho mayores. Sus alas y sus patas son muy fuertes. Puede llevarse volando Pokémon pequeños.</string>
     <string name="fullscreen_image_view">Fullscreen image view</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="pokeballimage">pokeballImage</string>
 </resources>

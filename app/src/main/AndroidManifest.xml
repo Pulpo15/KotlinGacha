@@ -9,10 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Kotlingacha">
-        <activity android:name=".activity.cardImageViewActivity"></activity>
+        <activity android:name=".activity.LoginActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.cardImageViewActivity" />
         <activity
             android:name=".activity.GachaActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity android:name=".activity.CardViewActivity" />
         <activity
             android:name=".activity.MainActivity"

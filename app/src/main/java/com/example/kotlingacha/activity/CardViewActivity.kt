@@ -24,11 +24,12 @@ class CardViewActivity : AppCompatActivity() {
         val name:String = intent.getStringExtra(NAME).toString()
         val description:String = intent.getStringExtra(DESCRIPTION).toString()
 
+        // Find references in layout
         val cardName: TextView = findViewById(R.id.cardNameTextView)
         val cardViewImageButton: ImageButton = findViewById(R.id.cardViewImageButton)
         val cardDescriptionTextView: TextView = findViewById(R.id.cardDescriptionTextView)
 
-        // Assign values from MainActivity
+        // Assign values from MainActivity to layout
         cardName.text = name
         cardViewImageButton.setImageResource(image)
         cardDescriptionTextView.text = description
