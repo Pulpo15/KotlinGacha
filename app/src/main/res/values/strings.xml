@@ -43,4 +43,5 @@ Tiene un carácter salvaje. No duda en desafiar a rivales mucho mayores. Sus ala
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="pokeballimage">pokeballImage</string>
+    <string name="back">Back</string>
 </resources>

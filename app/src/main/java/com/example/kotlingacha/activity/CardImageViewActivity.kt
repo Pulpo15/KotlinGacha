@@ -1,15 +1,13 @@
 package com.example.kotlingacha.activity
 
-import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Window
 import android.view.WindowManager
-import android.widget.ImageButton
 import android.widget.ImageView
 import com.example.kotlingacha.R
 
-class cardImageViewActivity : AppCompatActivity() {
+class CardImageViewActivity : AppCompatActivity() {
 
     companion object{
         const val IMAGE = "IMAGE"
@@ -18,7 +16,7 @@ class cardImageViewActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
         window.setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN

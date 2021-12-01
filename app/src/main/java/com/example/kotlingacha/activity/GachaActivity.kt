@@ -23,6 +23,10 @@ class GachaActivity : AppCompatActivity() {
             clearSharedPreferences()
             Inventory.inventoryData.clear()
         }
+
+        findViewById<Button>(R.id.gachaBackButton).setOnClickListener{
+            finish()
+        }
     }
 
     // Function to add a new card to the list using rng

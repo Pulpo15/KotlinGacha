@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".activity.CardViewActivity">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,14 +14,15 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
 
         <ImageButton
             android:id="@+id/cardViewImageButton"
             android:layout_width="match_parent"
             android:layout_height="350dp"
             android:contentDescription="@string/card_image"
+            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_launcher_foreground"
             tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck" />
 
@@ -29,20 +30,35 @@
             android:id="@+id/cardNameTextView"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp" />
+            android:layout_marginHorizontal="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/cardDescriptionTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardViewImageButton" />
 
         <TextView
             android:id="@+id/cardDescriptionTextView"
             android:layout_width="350dp"
             android:layout_height="150dp"
-            tools:layout_marginBottom="10dp" />
+            app:layout_constraintBottom_toTopOf="@+id/tradeButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/tradeButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/wip" />
+            android:text="@string/wip"
+            app:layout_constraintBottom_toTopOf="@+id/backButton" />
 
-    </LinearLayout>
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

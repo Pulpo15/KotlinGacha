@@ -3,6 +3,7 @@ package com.example.kotlingacha.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import com.example.kotlingacha.R
@@ -35,11 +36,15 @@ class CardViewActivity : AppCompatActivity() {
         cardDescriptionTextView.text = description
 
         findViewById<ImageButton>(R.id.cardViewImageButton).setOnClickListener{
-            val intent = Intent(this, cardImageViewActivity::class.java)
+            val intent = Intent(this, CardImageViewActivity::class.java)
 
-            intent.putExtra(cardImageViewActivity.IMAGE, image)
+            intent.putExtra(CardImageViewActivity.IMAGE, image)
 
             startActivity(intent)
+        }
+
+        findViewById<Button>(R.id.backButton).setOnClickListener{
+            finish()
         }
     }
 }
