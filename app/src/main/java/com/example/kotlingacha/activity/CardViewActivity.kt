@@ -1,5 +1,6 @@
 package com.example.kotlingacha.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageButton
@@ -31,5 +32,13 @@ class CardViewActivity : AppCompatActivity() {
         cardName.text = name
         cardViewImageButton.setImageResource(image)
         cardDescriptionTextView.text = description
+
+        findViewById<ImageButton>(R.id.cardViewImageButton).setOnClickListener{
+            val intent = Intent(this, cardImageViewActivity::class.java)
+
+            intent.putExtra(cardImageViewActivity.IMAGE, image)
+
+            startActivity(intent)
+        }
     }
 }
