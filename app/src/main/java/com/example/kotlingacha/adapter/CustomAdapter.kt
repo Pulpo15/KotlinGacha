@@ -27,20 +27,20 @@ class CustomAdapter(private val context: Context, private val mList: List<ItemsV
     // binds the list items to a view
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        val ItemsViewModel = mList[position]
+        val itemsViewModel = mList[position]
 
         // sets the image to the imageview from our itemHolder class
-        holder.imageView.setImageResource(ItemsViewModel.image)
+        holder.imageView.setImageResource(itemsViewModel.image)
 
         // sets the text to the textview from our itemHolder class
-        holder.textView.text = ItemsViewModel.text
+        holder.textView.text = itemsViewModel.text
 
         holder.imageView.setOnClickListener{
             val intent = Intent(context, CardViewActivity::class.java)
 
             intent.putExtra(CardViewActivity.NAME, holder.textView.text)
-            intent.putExtra(CardViewActivity.IMAGE, ItemsViewModel.image)
-            intent.putExtra(CardViewActivity.DESCRIPTION, ItemsViewModel.description)
+            intent.putExtra(CardViewActivity.IMAGE, itemsViewModel.image)
+            intent.putExtra(CardViewActivity.DESCRIPTION, itemsViewModel.description)
 
             context.startActivity(intent)
 

@@ -3,7 +3,6 @@ package com.example.kotlingacha.activity
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import com.example.kotlingacha.obj.Inventory
 import com.example.kotlingacha.R
@@ -34,7 +33,7 @@ class GachaActivity : AppCompatActivity() {
         val randomNum = Random.nextInt(1, 13)
 
         // Set image
-        var imageInt = 0;
+        var imageInt = 0
         when(randomNum){
             1-> imageInt = R.drawable.turtwig
             2-> imageInt = R.drawable.grotle
