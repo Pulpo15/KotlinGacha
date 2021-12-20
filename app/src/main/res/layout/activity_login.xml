@@ -39,7 +39,7 @@
             tools:layout_editor_absoluteX="0dp">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/usernameInput"
+                android:id="@+id/emailInput"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -72,6 +72,14 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <TextView
+                android:id="@+id/goToRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="@string/not_registered_yet"
+                android:textColor="#6821E6" />
+
             <Button
                 android:id="@+id/loginButton"
                 style="@style/Widget.MaterialComponents.Button"
@@ -80,6 +88,7 @@
                 android:layout_gravity="end"
                 android:layout_margin="16dp"
                 android:text="@string/login" />
+
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

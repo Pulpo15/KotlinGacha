@@ -10,8 +10,11 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import com.example.kotlingacha.R
+import com.example.kotlingacha.RegisterActivity
 import com.google.android.material.textfield.TextInputLayout
 
 class LoginActivity : AppCompatActivity() {
@@ -19,13 +22,18 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var usernameInput: EditText
     private lateinit var passwordInput: EditText
 
+    val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK)
+            finish()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
         supportActionBar?.hide()
 
-        usernameInput = findViewById<TextInputLayout>(R.id.usernameInput).editText ?: return
+        usernameInput = findViewById<TextInputLayout>(R.id.emailInput).editText ?: return
         passwordInput = findViewById<TextInputLayout>(R.id.passwordInput).editText ?: return
 
         // Check username
@@ -71,6 +79,10 @@ class LoginActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "Check the data", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        findViewById<TextView>(R.id.goToRegister).setOnClickListener{
+            launcher.launch(Intent(this, RegisterActivity::class.java))
         }
     }
 
