@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "972819329120",
-    "project_id": "kotlingacha",
-    "storage_bucket": "kotlingacha.appspot.com"
+    "project_number": "501128401016",
+    "project_id": "kotlingachaenti",
+    "storage_bucket": "kotlingachaenti.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:972819329120:android:d16964ebf3c282744f5305",
+        "mobilesdk_app_id": "1:501128401016:android:9f804f620e2f72502cdd8d",
         "android_client_info": {
           "package_name": "com.example.kotlingacha"
         }
       },
       "oauth_client": [
         {
-          "client_id": "972819329120-9sb51llk7htjlemsurqnpcq63s4h6ge0.apps.googleusercontent.com",
+          "client_id": "501128401016-c86gao7cfslulvc3cn1ic67hkk4skorl.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDje5_6tKUk2itBvzzfNL_3_hZhLqQa3WE"
+          "current_key": "AIzaSyBpjY1M86uhSTD1vNr6NpJIi2cF5W_6Js8"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "972819329120-9sb51llk7htjlemsurqnpcq63s4h6ge0.apps.googleusercontent.com",
+              "client_id": "501128401016-c86gao7cfslulvc3cn1ic67hkk4skorl.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
