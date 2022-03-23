@@ -11,6 +11,8 @@ import com.example.kotlingacha.activity.MainActivity
 import com.example.kotlingacha.databinding.ActivityRegisterBinding
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -26,6 +28,9 @@ class RegisterActivity : AppCompatActivity() {
         FirebaseApp.initializeApp(this)
         firebaseAuth = FirebaseAuth.getInstance()
 
+        //Instance to the Database
+        val db = Firebase.firestore
+
         binding.nameTextInput.setOnFocusChangeListener{v, hasFocus ->
             if (!hasFocus && binding.nameTextInput.text.isNullOrEmpty())
                 binding.nameTextInput.error = "Error"
@@ -33,10 +38,26 @@ class RegisterActivity : AppCompatActivity() {
         binding.registerButton.setOnClickListener{
             val email = binding.emailTextInput.text.toString()
             val password = binding.passwordRegisterTextInput.text.toString()
+            val name = binding.nameTextInput.text.toString()
 
             if (email.isEmpty() || password.isEmpty() || password != binding.repeatPasswordTextInput.text.toString())
                 return@setOnClickListener Toast.makeText(this, "Check data", Toast.LENGTH_SHORT).show()
             binding.registerProgressBar.visibility = View.VISIBLE
+
+            //Prepare data for database
+            val user = hashMapOf(
+                "mail" to email,
+                "name" to name,
+                "card" to false,
+                "cardName" to ""
+            )
+
+            //Add data to database
+            db.collection("users")
+                .document(name)
+                .set(user)
+                .addOnSuccessListener { Toast.makeText(this, "DocumentSnapshot successfully written!", Toast.LENGTH_SHORT).show() }
+                .addOnFailureListener { e -> Toast.makeText(this, "Error writing document", Toast.LENGTH_SHORT).show() }
 
             firebaseAuth.createUserWithEmailAndPassword(email, password).addOnSuccessListener{
                 firebaseAuth.signInWithEmailAndPassword(email, password).addOnSuccessListener {
