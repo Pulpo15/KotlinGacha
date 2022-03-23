@@ -50,4 +50,6 @@ Tiene un carácter salvaje. No duda en desafiar a rivales mucho mayores. Sus ala
     <string name="repeat_the_password">Repeat the password</string>
     <string name="register">Register</string>
     <string name="email">Email</string>
+    <string name="send_card">Send Card</string>
+    <string name="recieve_card">Recieve Card</string>
 </resources>

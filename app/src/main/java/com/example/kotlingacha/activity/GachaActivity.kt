@@ -1,17 +1,39 @@
 package com.example.kotlingacha.activity
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import com.example.kotlingacha.obj.Inventory
 import com.example.kotlingacha.R
+import com.example.kotlingacha.databinding.ActivityGachaBinding
+import com.example.kotlingacha.databinding.ActivityMainBinding
 import kotlin.random.Random
 
 class GachaActivity : AppCompatActivity() {
+
+    lateinit var binding: ActivityGachaBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_gacha)
+        binding = ActivityGachaBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        var recievedCard = ""
+
+        binding.menuMainActivity.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.action_recieve_card -> startActivity(
+                    Intent(this, RecieveCardActivity::class.java)
+                )
+                R.id.action_send_card -> startActivity(
+                    Intent(this, SendCardActivity::class.java)
+                )
+                else -> return@setOnMenuItemClickListener false
+            }
+            true
+        }
 
         findViewById<Button>(R.id.getCardButton).setOnClickListener {
             Inventory.inventoryData.add(generateCard())
@@ -26,6 +48,11 @@ class GachaActivity : AppCompatActivity() {
         findViewById<Button>(R.id.gachaBackButton).setOnClickListener{
             finish()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        saveData()
     }
 
     // Function to add a new card to the list using rng
