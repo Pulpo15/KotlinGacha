@@ -45,45 +45,46 @@ class RecieveCardActivity : AppCompatActivity() {
             }
         }
 
+
+    //Se que està lleig tenir funcions redundants, sry :(
     private fun generateCard(pokemonName: String): Inventory {
         // Set image
-        var imageInt = 0
-        when(pokemonName){
-            "Turtwig" -> imageInt = R.drawable.turtwig
-            "Grotle" -> imageInt = R.drawable.grotle
-            "Torterra" -> imageInt = R.drawable.torterra
-            "Chimchar" -> imageInt = R.drawable.chimchar
-            "Monferno" -> imageInt = R.drawable.monferno
-            "Infernape" -> imageInt = R.drawable.infernape
-            "Piplup" -> imageInt = R.drawable.piplup
-            "Prinplup" -> imageInt = R.drawable.prinplup
-            "Empoleon" -> imageInt = R.drawable.empoleon
-            "Starly" -> imageInt = R.drawable.starly
-            "Staravia" -> imageInt = R.drawable.staravia
-            "Staraptor" -> imageInt = R.drawable.staraptor
+        val imageInt = when(pokemonName){
+            "Turtwig"->R.drawable.turtwig
+            "Grotle"->R.drawable.grotle
+            "Torterra"->R.drawable.torterra
+            "Chimchar"->R.drawable.chimchar
+            "Monferno"->R.drawable.monferno
+            "Infernape"->R.drawable.infernape
+            "Piplup"->R.drawable.piplup
+            "Prinplup"->R.drawable.prinplup
+            "Empoleon"->R.drawable.empoleon
+            "Starly"->R.drawable.starly
+            "Staravia"->R.drawable.staravia
+            "Staraptor"->R.drawable.staraptor
+            else->R.drawable.piplup
         }
 
         // Set name
-        var name = pokemonName
+        val name = pokemonName
 
         // Set description
-        var description = 0
-        when(pokemonName){
-            "Turtwig"-> description = R.string.turtwigdescription
-            "Grotle"-> description = R.string.grotledescription
-            "Torterra"-> description = R.string.torterradescription
-            "Chimchar"-> description = R.string.chimchardescrption
-            "Monferno"-> description = R.string.monfernodescription
-            "Infernape"-> description = R.string.infernapedescription
-            "Piplup"-> description = R.string.piplupdescription
-            "Prinplup"-> description = R.string.prinplupdescription
-            "Empoleon"-> description = R.string.empoleondescrpition
-            "Starly"-> description = R.string.starlydescription
-            "Staravia"-> description = R.string.staraviadescription
-            "Staraptor"-> description = R.string.staraptordescription
+        val description = when(pokemonName){
+            "Turtwig"->R.string.turtwigdescription
+            "Grotle"->R.string.grotledescription
+            "Torterra"->R.string.torterradescription
+            "Chimchar"->R.string.chimchardescrption
+            "Monferno"->R.string.monfernodescription
+            "Infernape"->R.string.infernapedescription
+            "Piplup"->R.string.piplupdescription
+            "Prinplup"->R.string.prinplupdescription
+            "Empoleon"->R.string.empoleondescrpition
+            "Starly"->R.string.starlydescription
+            "Staravia"->R.string.staraviadescription
+            "Staraptor"->R.string.staraptordescription
+            else->R.string.piplupdescription
         }
 
         return Inventory(imageInt, name, getString(description))
     }
-
 }

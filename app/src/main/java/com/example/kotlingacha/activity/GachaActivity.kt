@@ -60,54 +60,54 @@ class GachaActivity : AppCompatActivity() {
         val randomNum = Random.nextInt(1, 13)
 
         // Set image
-        var imageInt = 0
-        when(randomNum){
-            1-> imageInt = R.drawable.turtwig
-            2-> imageInt = R.drawable.grotle
-            3-> imageInt = R.drawable.torterra
-            4-> imageInt = R.drawable.chimchar
-            5-> imageInt = R.drawable.monferno
-            6-> imageInt = R.drawable.infernape
-            7-> imageInt = R.drawable.piplup
-            8-> imageInt = R.drawable.prinplup
-            9-> imageInt = R.drawable.empoleon
-            10-> imageInt = R.drawable.starly
-            11-> imageInt = R.drawable.staravia
-            12-> imageInt = R.drawable.staraptor
+        val imageInt = when(randomNum){
+            1-> R.drawable.turtwig
+            2-> R.drawable.grotle
+            3-> R.drawable.torterra
+            4-> R.drawable.chimchar
+            5-> R.drawable.monferno
+            6-> R.drawable.infernape
+            7-> R.drawable.piplup
+            8-> R.drawable.prinplup
+            9-> R.drawable.empoleon
+            10-> R.drawable.starly
+            11-> R.drawable.staravia
+            12-> R.drawable.staraptor
+            else-> R.drawable.piplup
         }
 
         // Set name
-        var name = ""
-        when(randomNum){
-            1-> name = "Turtwig"
-            2-> name = "Grotle"
-            3-> name = "Torterra"
-            4-> name = "Chimchar"
-            5-> name = "Monferno"
-            6-> name = "Infernape"
-            7-> name = "Piplup"
-            8-> name = "Prinplup"
-            9-> name = "Empoleon"
-            10-> name = "Starly"
-            11-> name = "Staravia"
-            12-> name = "Staraptor"
+        val name = when(randomNum){
+            1->"Turtwig"
+            2->"Grotle"
+            3->"Torterra"
+            4->"Chimchar"
+            5->"Monferno"
+            6->"Infernape"
+            7->"Piplup"
+            8->"Prinplup"
+            9->"Empoleon"
+            10->"Starly"
+            11->"Staravia"
+            12->"Staraptor"
+            else->"Piplup"
         }
 
         // Set description
-        var description = 0
-        when(randomNum){
-            1-> description = R.string.turtwigdescription
-            2-> description = R.string.grotledescription
-            3-> description = R.string.torterradescription
-            4-> description = R.string.chimchardescrption
-            5-> description = R.string.monfernodescription
-            6-> description = R.string.infernapedescription
-            7-> description = R.string.piplupdescription
-            8-> description = R.string.prinplupdescription
-            9-> description = R.string.empoleondescrpition
-            10-> description = R.string.starlydescription
-            11-> description = R.string.staraviadescription
-            12-> description = R.string.staraptordescription
+        val description = when(randomNum){
+            1->R.string.turtwigdescription
+            2->R.string.grotledescription
+            3->R.string.torterradescription
+            4->R.string.chimchardescrption
+            5->R.string.monfernodescription
+            6->R.string.infernapedescription
+            7->R.string.piplupdescription
+            8->R.string.prinplupdescription
+            9->R.string.empoleondescrpition
+            10->R.string.starlydescription
+            11->R.string.staraviadescription
+            12->R.string.staraptordescription
+            else->R.string.piplupdescription
         }
 
         return Inventory(imageInt, name, getString(description))
