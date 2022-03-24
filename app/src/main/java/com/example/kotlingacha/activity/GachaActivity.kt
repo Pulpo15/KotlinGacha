@@ -20,8 +20,6 @@ class GachaActivity : AppCompatActivity() {
         binding = ActivityGachaBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var recievedCard = ""
-
         binding.menuMainActivity.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.action_recieve_card -> startActivity(
@@ -35,17 +33,17 @@ class GachaActivity : AppCompatActivity() {
             true
         }
 
-        findViewById<Button>(R.id.getCardButton).setOnClickListener {
+        binding.getCardButton.setOnClickListener {
             Inventory.inventoryData.add(generateCard())
             saveData()
         }
 
-        findViewById<Button>(R.id.clearMemory).setOnClickListener{
+        binding.clearMemory.setOnClickListener{
             clearSharedPreferences()
             Inventory.inventoryData.clear()
         }
 
-        findViewById<Button>(R.id.gachaBackButton).setOnClickListener{
+        binding.gachaBackButton.setOnClickListener{
             finish()
         }
     }

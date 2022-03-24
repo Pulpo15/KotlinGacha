@@ -1,13 +1,11 @@
-package com.example.kotlingacha
+package com.example.kotlingacha.activity
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import com.example.kotlingacha.activity.MainActivity
 import com.example.kotlingacha.databinding.ActivityRegisterBinding
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth

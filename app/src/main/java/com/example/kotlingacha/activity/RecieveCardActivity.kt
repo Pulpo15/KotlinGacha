@@ -30,16 +30,17 @@ class RecieveCardActivity : AppCompatActivity() {
                     val data = document.data
                     if (data?.get("card") as Boolean){
                         Inventory.inventoryData.add(generateCard(document.data?.get("cardName").toString()))
+                        Toast.makeText(this, "${document.data?.get("cardName").toString()} recieved", Toast.LENGTH_SHORT).show()
                         db.collection("users")
                             .document(name)
                             .update(mapOf(
                                 "card" to false,
                                 "cardName" to ""
                             ))
-                        finish()
                     } else {
                         Toast.makeText(this, "You don't have any card in your mailbox", Toast.LENGTH_SHORT).show()
                     }
+                    finish()
                 }
                 .addOnFailureListener{ e -> Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()}
             }

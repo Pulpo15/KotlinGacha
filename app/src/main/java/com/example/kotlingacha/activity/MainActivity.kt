@@ -3,19 +3,14 @@ package com.example.kotlingacha.activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlingacha.adapter.CustomAdapter
 import com.example.kotlingacha.obj.Inventory
-import com.example.kotlingacha.obj.ItemsViewModel
+import com.example.kotlingacha.obj.PokemonCard
 import com.example.kotlingacha.R
 import com.example.kotlingacha.databinding.ActivityMainBinding
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,9 +22,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //val db = Firebase.firestore
-
-
         loadData()
     }
 
@@ -37,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
 
         // Button to access Gacha activity
-        findViewById<Button>(R.id.gachaButton).setOnClickListener {
+        binding.gachaButton.setOnClickListener {
             val intent = Intent(this, GachaActivity::class.java)
             startActivity(intent)
         }
@@ -49,11 +41,11 @@ class MainActivity : AppCompatActivity() {
         recyclerview.layoutManager = LinearLayoutManager(this)
 
         // ArrayList of class ItemsViewModel
-        val data = ArrayList<ItemsViewModel>()
+        val data = ArrayList<PokemonCard>()
 
         // This loop will create all the cards on the list
         Inventory.inventoryData.forEachIndexed{ _, elem ->
-            data.add(ItemsViewModel(elem.image, elem.name, elem.description))
+            data.add(PokemonCard(elem.image, elem.name, elem.description))
         }
 
         // This will pass the ArrayList to our Adapter
@@ -63,6 +55,7 @@ class MainActivity : AppCompatActivity() {
         recyclerview.adapter = adapter
     }
 
+    //Load data from shared prefs, in the future it will be loaded from db
     private fun loadData(){
         val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
         val savedSize = sharedPreferences.getInt("SIZE", 0)
