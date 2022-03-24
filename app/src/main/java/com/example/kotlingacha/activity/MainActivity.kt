@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlingacha.adapter.CustomAdapter
 import com.example.kotlingacha.obj.Inventory
-import com.example.kotlingacha.obj.PokemonCard
 import com.example.kotlingacha.R
 import com.example.kotlingacha.databinding.ActivityMainBinding
 
@@ -41,11 +40,11 @@ class MainActivity : AppCompatActivity() {
         recyclerview.layoutManager = LinearLayoutManager(this)
 
         // ArrayList of class ItemsViewModel
-        val data = ArrayList<PokemonCard>()
+        val data = ArrayList<Inventory>()
 
         // This loop will create all the cards on the list
         Inventory.inventoryData.forEachIndexed{ _, elem ->
-            data.add(PokemonCard(elem.image, elem.name, elem.description))
+            data.add(Inventory(elem.image, elem.name, elem.description))
         }
 
         // This will pass the ArrayList to our Adapter
