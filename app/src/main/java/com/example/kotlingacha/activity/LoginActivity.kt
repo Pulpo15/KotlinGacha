@@ -16,6 +16,8 @@ import androidx.activity.result.contract.ActivityResultContracts
 import com.example.kotlingacha.R
 import com.example.kotlingacha.databinding.ActivityLoginBinding
 import com.google.android.material.textfield.TextInputLayout
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class LoginActivity : AppCompatActivity() {
 
@@ -63,7 +65,7 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
-        findViewById<Button>(R.id.loginButton).setOnClickListener {
+        binding.loginButton.setOnClickListener {
 
             val user = usernameInput.text.toString()
             val pass = passwordInput.text.toString()
@@ -71,19 +73,12 @@ class LoginActivity : AppCompatActivity() {
             // Check form data
             if (checkLogin(user, pass)) {
                 doLogin(user, pass)
-
-                // Start new activity
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-
-                // Kill LoginActivity to keep mem
-                finish()
             } else {
                 Toast.makeText(this, "Check the data", Toast.LENGTH_SHORT).show()
             }
         }
 
-        findViewById<TextView>(R.id.goToRegister).setOnClickListener{
+        binding.goToRegister.setOnClickListener{
             launcher.launch(Intent(this, RegisterActivity::class.java))
         }
     }
@@ -94,7 +89,23 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun doLogin(user: String, pass: String) {
-        // TODO: Aquí l'app hauria de memoritzar les dades per tal que el login fos efectiu
+        val auth = Firebase.auth
+
+        auth.signInWithEmailAndPassword(user, pass)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    // Start new activity
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                    // Kill LoginActivity to keep mem
+                    finish()
+                    Toast.makeText(this, "Logged with user ${auth.currentUser?.displayName}", Toast.LENGTH_SHORT).show()
+                } else {
+                    // If sign in fails, display a message to the user.
+                    Toast.makeText(baseContext, "Authentication failed.",
+                        Toast.LENGTH_SHORT).show()
+                }
+            }
     }
 
     private fun String?.isValidEmail(): Boolean {

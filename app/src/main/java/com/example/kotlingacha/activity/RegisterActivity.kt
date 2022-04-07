@@ -9,6 +9,7 @@ import android.widget.Toast
 import com.example.kotlingacha.databinding.ActivityRegisterBinding
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -59,6 +60,19 @@ class RegisterActivity : AppCompatActivity() {
 
             firebaseAuth.createUserWithEmailAndPassword(email, password).addOnSuccessListener{
                 firebaseAuth.signInWithEmailAndPassword(email, password).addOnSuccessListener {
+
+                    //Modify firebase user to add the username
+                    val user = firebaseAuth.currentUser
+                    val profileUpdates = userProfileChangeRequest {
+                        displayName = name
+                    }
+                    user!!.updateProfile(profileUpdates)
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                Toast.makeText(this, "Added username ${name} to your account", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+
                     setResult(Activity.RESULT_OK)
                     startActivity(Intent(this, MainActivity::class.java))
                     finish()
