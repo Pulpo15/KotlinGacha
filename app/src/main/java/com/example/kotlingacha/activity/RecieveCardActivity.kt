@@ -6,6 +6,7 @@ import android.widget.Toast
 import com.example.kotlingacha.R
 import com.example.kotlingacha.databinding.ActivityRecieveCardBinding
 import com.example.kotlingacha.obj.Inventory
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlin.random.Random
@@ -13,6 +14,7 @@ import kotlin.random.Random
 class RecieveCardActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityRecieveCardBinding
+    private lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,11 +22,12 @@ class RecieveCardActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val db = Firebase.firestore
+        firebaseAuth = FirebaseAuth.getInstance()
+        val user = firebaseAuth.currentUser?.displayName.toString()
 
         binding.checkCardButton.setOnClickListener {
-            val name = binding.usernameTextInput.text.toString()
             db.collection("users")
-                .document(name)
+                .document(user)
                 .get()
                 .addOnSuccessListener { document ->
                     val data = document.data
@@ -32,7 +35,7 @@ class RecieveCardActivity : AppCompatActivity() {
                         Inventory.inventoryData.add(generateCard(document.data?.get("cardName").toString()))
                         Toast.makeText(this, "${document.data?.get("cardName").toString()} recieved", Toast.LENGTH_SHORT).show()
                         db.collection("users")
-                            .document(name)
+                            .document(user)
                             .update(mapOf(
                                 "card" to false,
                                 "cardName" to ""

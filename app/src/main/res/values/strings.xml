@@ -52,4 +52,5 @@ Tiene un carácter salvaje. No duda en desafiar a rivales mucho mayores. Sus ala
     <string name="email">Email</string>
     <string name="send_card">Send Card</string>
     <string name="recieve_card">Recieve Card</string>
+    <string name="check_card">Check Card</string>
 </resources>

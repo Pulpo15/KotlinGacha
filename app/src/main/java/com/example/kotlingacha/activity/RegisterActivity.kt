@@ -66,12 +66,7 @@ class RegisterActivity : AppCompatActivity() {
                     val profileUpdates = userProfileChangeRequest {
                         displayName = name
                     }
-                    user!!.updateProfile(profileUpdates)
-                        .addOnCompleteListener { task ->
-                            if (task.isSuccessful) {
-                                Toast.makeText(this, "Added username ${name} to your account", Toast.LENGTH_SHORT).show()
-                            }
-                        }
+                    user?.updateProfile(profileUpdates)
 
                     setResult(Activity.RESULT_OK)
                     startActivity(Intent(this, MainActivity::class.java))
