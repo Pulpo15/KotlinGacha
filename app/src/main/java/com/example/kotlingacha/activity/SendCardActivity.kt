@@ -20,6 +20,8 @@ class SendCardActivity : AppCompatActivity() {
             val userName = binding.userTextInputEditText.text.toString()
             val cardName = binding.cardNameTextInputEditText.text.toString()
 
+            val cardNameUpper = cardName[0].uppercaseChar() + cardName.substring(1)
+
             val db = Firebase.firestore
 
             db.collection("users")
@@ -30,9 +32,9 @@ class SendCardActivity : AppCompatActivity() {
                         .document(userName)
                         .update(mapOf(
                             "card" to true,
-                            "cardName" to cardName
+                            "cardName" to cardNameUpper
                         ))
-                        .addOnSuccessListener {Toast.makeText(this, "Sent ${cardName} to ${userName}", Toast.LENGTH_SHORT).show()  }
+                        .addOnSuccessListener {Toast.makeText(this, "Sent ${cardNameUpper} to ${userName}", Toast.LENGTH_SHORT).show()  }
                         .addOnFailureListener {  Toast.makeText(this, "Error sending card}", Toast.LENGTH_SHORT).show()}
                 }
                 .addOnFailureListener{ e -> Toast.makeText(this, "Can't find ${userName} in db", Toast.LENGTH_SHORT).show()}
