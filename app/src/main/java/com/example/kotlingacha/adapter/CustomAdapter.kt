@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlingacha.R
 import com.example.kotlingacha.activity.CardViewActivity
 import com.example.kotlingacha.obj.Inventory
+import com.squareup.picasso.Picasso
 
 class CustomAdapter(private val context: Context, private val mList: List<Inventory>) : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 
@@ -30,7 +31,10 @@ class CustomAdapter(private val context: Context, private val mList: List<Invent
         val itemsViewModel = mList[position]
 
         // sets the image to the imageview from our itemHolder class
-        holder.imageView.setImageResource(itemsViewModel.image)
+        Picasso.get()
+            .load(itemsViewModel.image)
+            .into(holder.imageView)
+        //holder.imageView.setImageResource(itemsViewModel.image)
 
         // sets the text to the textview from our itemHolder class
         holder.textView.text = itemsViewModel.name

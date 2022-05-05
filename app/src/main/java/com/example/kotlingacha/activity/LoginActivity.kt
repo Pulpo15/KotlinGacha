@@ -35,6 +35,8 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //clearSharedPreferences()
+
         supportActionBar?.hide()
 
         usernameInput = findViewById<TextInputLayout>(R.id.emailInput).editText ?: return
@@ -81,6 +83,14 @@ class LoginActivity : AppCompatActivity() {
         binding.goToRegister.setOnClickListener{
             launcher.launch(Intent(this, RegisterActivity::class.java))
         }
+    }
+
+    //Remember to remove
+    private fun clearSharedPreferences(){
+        val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.clear()
+        editor.apply()
     }
 
     private fun checkLogin(user: String?, pass: String?): Boolean {

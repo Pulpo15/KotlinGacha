@@ -59,12 +59,12 @@ class MainActivity : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
         val savedSize = sharedPreferences.getInt("SIZE", 0)
         for (i in 0..savedSize){
-            val image = sharedPreferences.getInt("IMAGE $i", R.drawable.ic_launcher_foreground)
+            val image = sharedPreferences.getString("IMAGE $i", "")
             val name = sharedPreferences.getString("NAME $i", "Placeholder")
             val description = sharedPreferences.getString("DESCRIPTION $i", "Placeholder")
             if(name == "Placeholder")
                 return
-            Inventory.inventoryData.add(Inventory(image,name ?: "",description ?: ""))
+            Inventory.inventoryData.add(Inventory(image ?: "",name ?: "",description ?: ""))
         }
     }
 }
