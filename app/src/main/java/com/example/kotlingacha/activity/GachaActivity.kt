@@ -9,11 +9,20 @@ import com.example.kotlingacha.obj.Inventory
 import com.example.kotlingacha.R
 import com.example.kotlingacha.databinding.ActivityGachaBinding
 import com.example.kotlingacha.databinding.ActivityMainBinding
+import com.example.kotlingacha.poekmonapi.PokemonAPI
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
 import kotlin.random.Random
 
 class GachaActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityGachaBinding
+
+    private val retrofit = Retrofit.Builder()
+        .baseUrl("https://api.chucknorris.io/")
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +55,11 @@ class GachaActivity : AppCompatActivity() {
         binding.gachaBackButton.setOnClickListener{
             finish()
         }
+    }
+
+    private fun funGetPokemon(){
+        val pokedexNum = 123
+        val call = retrofit.create(PokemonAPI::class.java).getPokemon(pokedexNum.toString())
     }
 
     override fun onResume() {
