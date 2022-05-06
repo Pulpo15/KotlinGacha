@@ -9,7 +9,6 @@ import com.example.kotlingacha.obj.Inventory
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import kotlin.random.Random
 
 class RecieveCardActivity : AppCompatActivity() {
 
@@ -89,6 +88,6 @@ class RecieveCardActivity : AppCompatActivity() {
             else->R.string.piplupdescription
         }
 
-        return Inventory("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/123.png", name, getString(description))
+        return Inventory("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/123.png", name, getString(description), "", "", "","")
     }
 }

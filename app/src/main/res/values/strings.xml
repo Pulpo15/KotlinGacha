@@ -53,4 +53,11 @@ Tiene un carácter salvaje. No duda en desafiar a rivales mucho mayores. Sus ala
     <string name="send_card">Send Card</string>
     <string name="recieve_card">Recieve Card</string>
     <string name="check_card">Check Card</string>
+    <string name="cardname">CardName</string>
+    <string name="height_m">Height (M)</string>
+    <string name="_3">3</string>
+    <string name="pok_dex_id">Pokédex ID</string>
+    <string name="_214">214</string>
+    <string name="type1">type1</string>
+    <string name="weight">Weight</string>
 </resources>

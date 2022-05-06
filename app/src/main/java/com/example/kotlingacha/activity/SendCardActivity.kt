@@ -39,6 +39,5 @@ class SendCardActivity : AppCompatActivity() {
                 }
                 .addOnFailureListener{ e -> Toast.makeText(this, "Can't find ${userName} in db", Toast.LENGTH_SHORT).show()}
         }
-
     }
 }

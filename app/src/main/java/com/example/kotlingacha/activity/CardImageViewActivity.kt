@@ -6,12 +6,16 @@ import android.view.Window
 import android.view.WindowManager
 import android.widget.ImageView
 import com.example.kotlingacha.R
+import com.example.kotlingacha.databinding.ActivityCardImageViewBinding
+import com.squareup.picasso.Picasso
 
 class CardImageViewActivity : AppCompatActivity() {
 
     companion object{
         const val IMAGE = "IMAGE"
     }
+
+    lateinit var binding: ActivityCardImageViewBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,16 +26,17 @@ class CardImageViewActivity : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
 
-        setContentView(R.layout.activity_card_image_view)
+        binding = ActivityCardImageViewBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         //Hide upper App bar
         supportActionBar?.hide()
 
-        val image:Int = intent.getIntExtra(CardViewActivity.IMAGE, 0)
+        val image = intent.getStringExtra(CardViewActivity.IMAGE)
 
-        val cardViewImageButton: ImageView = findViewById(R.id.cardImageView)
-
-        cardViewImageButton.setImageResource(image)
+        Picasso.get()
+            .load(image)
+            .into(binding.cardImageView)
     }
 
 

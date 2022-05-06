@@ -44,7 +44,8 @@ class MainActivity : AppCompatActivity() {
 
         // This loop will create all the cards on the list
         Inventory.inventoryData.forEachIndexed{ _, elem ->
-            data.add(Inventory(elem.image, elem.name, elem.description))
+            data.add(Inventory(elem.image, elem.name, elem.height, elem.pokedexid, elem.weight,
+                elem.type1, elem.type2))
         }
 
         // This will pass the ArrayList to our Adapter
@@ -61,10 +62,16 @@ class MainActivity : AppCompatActivity() {
         for (i in 0..savedSize){
             val image = sharedPreferences.getString("IMAGE $i", "")
             val name = sharedPreferences.getString("NAME $i", "Placeholder")
-            val description = sharedPreferences.getString("DESCRIPTION $i", "Placeholder")
+            val height = sharedPreferences.getString("HEIGHT $i", "Placeholder")
+            val pokedexid = sharedPreferences.getString("POKEDEXID $i", "Placeholder")
+            val weight = sharedPreferences.getString("WEIGHT $i", "Placeholder")
+            val type1 = sharedPreferences.getString("TYPE1 $i", "Placerholder")
+            val type2 = sharedPreferences.getString("TYPE2 $i", "Placeholder")
             if(name == "Placeholder")
                 return
-            Inventory.inventoryData.add(Inventory(image ?: "",name ?: "",description ?: ""))
+            Inventory.inventoryData.add(Inventory(image ?: "",name ?: "",
+                height ?: "", pokedexid ?: "", weight ?: "", type1 ?: "",
+                type2 ?: ""))
         }
     }
 }

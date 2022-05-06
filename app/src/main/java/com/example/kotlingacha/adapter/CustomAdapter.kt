@@ -30,11 +30,9 @@ class CustomAdapter(private val context: Context, private val mList: List<Invent
 
         val itemsViewModel = mList[position]
 
-        // sets the image to the imageview from our itemHolder class
         Picasso.get()
             .load(itemsViewModel.image)
             .into(holder.imageView)
-        //holder.imageView.setImageResource(itemsViewModel.image)
 
         // sets the text to the textview from our itemHolder class
         holder.textView.text = itemsViewModel.name
@@ -42,9 +40,13 @@ class CustomAdapter(private val context: Context, private val mList: List<Invent
         holder.imageView.setOnClickListener{
             val intent = Intent(context, CardViewActivity::class.java)
 
-            intent.putExtra(CardViewActivity.NAME, holder.textView.text)
             intent.putExtra(CardViewActivity.IMAGE, itemsViewModel.image)
-            intent.putExtra(CardViewActivity.DESCRIPTION, itemsViewModel.description)
+            intent.putExtra(CardViewActivity.NAME, holder.textView.text)
+            intent.putExtra(CardViewActivity.HEIGHT, itemsViewModel.height)
+            intent.putExtra(CardViewActivity.POKEDEXID, itemsViewModel.pokedexid)
+            intent.putExtra(CardViewActivity.WEIGHT, itemsViewModel.weight)
+            intent.putExtra(CardViewActivity.TYPE1, itemsViewModel.type1)
+            intent.putExtra(CardViewActivity.TYPE2, itemsViewModel.type2)
 
             context.startActivity(intent)
 
