@@ -10,6 +10,9 @@ import com.example.kotlingacha.adapter.CustomAdapter
 import com.example.kotlingacha.obj.Inventory
 import com.example.kotlingacha.R
 import com.example.kotlingacha.databinding.ActivityMainBinding
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
 
@@ -34,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Getting the recyclerview by its id
-        val recyclerview = findViewById<RecyclerView>(R.id.recyclerview)
+        val recyclerview = binding.recyclerview
 
         // This creates a vertical layout Manager
         recyclerview.layoutManager = LinearLayoutManager(this)
@@ -57,21 +60,16 @@ class MainActivity : AppCompatActivity() {
 
     //Load data from shared prefs, in the future it will be loaded from db
     private fun loadData(){
-        val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
-        val savedSize = sharedPreferences.getInt("SIZE", 0)
-        for (i in 0..savedSize){
-            val image = sharedPreferences.getString("IMAGE $i", "")
-            val name = sharedPreferences.getString("NAME $i", "Placeholder")
-            val height = sharedPreferences.getString("HEIGHT $i", "Placeholder")
-            val pokedexid = sharedPreferences.getString("POKEDEXID $i", "Placeholder")
-            val weight = sharedPreferences.getString("WEIGHT $i", "Placeholder")
-            val type1 = sharedPreferences.getString("TYPE1 $i", "Placerholder")
-            val type2 = sharedPreferences.getString("TYPE2 $i", "Placeholder")
-            if(name == "Placeholder")
-                return
-            Inventory.inventoryData.add(Inventory(image ?: "",name ?: "",
-                height ?: "", pokedexid ?: "", weight ?: "", type1 ?: "",
-                type2 ?: ""))
-        }
+        val db = Firebase.firestore
+
+        db.collection(Firebase.auth.currentUser?.displayName ?: "").get()
+            .addOnSuccessListener { documents ->
+                for (document in documents){
+                    Inventory.inventoryData.add(Inventory(document.get("image").toString(),
+                        document.get("name").toString(), document.get("height").toString(),
+                        document.get("pokedexid").toString(), document.get("weight").toString(),
+                        document.get("type1").toString(), document.get("type2").toString()))
+                }
+            }
     }
 }

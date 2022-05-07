@@ -58,6 +58,20 @@ class RegisterActivity : AppCompatActivity() {
                 .addOnSuccessListener { Toast.makeText(this, "DocumentSnapshot successfully written!", Toast.LENGTH_SHORT).show() }
                 .addOnFailureListener { e -> Toast.makeText(this, "Error writing document", Toast.LENGTH_SHORT).show() }
 
+            val pkmn = hashMapOf(
+                "image" to "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
+                "name" to "Pikachu",
+                "height" to "4",
+                "pokedexid" to "25",
+                "weight" to "60",
+                "type1" to "electric",
+                "type2" to ""
+            )
+
+            db.collection(name)
+                .document("Pikachu")
+                .set(pkmn)
+
             firebaseAuth.createUserWithEmailAndPassword(email, password).addOnSuccessListener{
                 firebaseAuth.signInWithEmailAndPassword(email, password).addOnSuccessListener {
 

@@ -11,6 +11,9 @@ import com.example.kotlingacha.R
 import com.example.kotlingacha.databinding.ActivityGachaBinding
 import com.example.kotlingacha.poekmonapi.PokemonAPI
 import com.example.kotlingacha.poekmonapi.PokemonCollection
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
 import kotlin.random.Random
@@ -70,7 +73,7 @@ class GachaActivity : AppCompatActivity() {
             ) {
                 val res = response.body() ?: return
                 Inventory.inventoryData.add(res.getPokemon())
-                saveData()
+                saveData(res.getPokemon())
                 binding.progressBar.visibility = View.GONE
             }
 
@@ -81,27 +84,23 @@ class GachaActivity : AppCompatActivity() {
 
     }
 
-    override fun onResume() {
-        super.onResume()
-        saveData()
-    }
-
     // Save inventoryData to file, put first the size of the list
-    private fun saveData(){
-        val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
-        editor.apply{
-            putInt("SIZE", Inventory.inventoryData.size)
-            Inventory.inventoryData.forEachIndexed{ i, elem ->
-                putString("IMAGE $i", elem.image)
-                putString("NAME $i", elem.name)
-                putString("HEIGHT $i", elem.height)
-                putString("POKEDEXID $i", elem.pokedexid)
-                putString("WEIGHT $i", elem.weight)
-                putString("TYPE1 $i", elem.type1)
-                putString("TYPE2 $i", elem.type2)
-            }
-        }.apply()
+    private fun saveData(pkmn: Inventory){
+        val db = Firebase.firestore
+
+        val pkmnMap = hashMapOf(
+            "image" to pkmn.image,
+            "name" to pkmn.name,
+            "height" to pkmn.height,
+            "pokedexid" to pkmn.pokedexid,
+            "weight" to pkmn.weight,
+            "type1" to pkmn.type1,
+            "type2" to pkmn.type2
+        )
+
+        db.collection(Firebase.auth.currentUser?.displayName ?: "")
+            .document(pkmn.name)
+            .set(pkmnMap)
     }
 
     // Editor only, erase all data
