@@ -32,8 +32,7 @@
         <activity android:name=".activity.CardImageViewActivity" />
         <activity
             android:name=".activity.GachaActivity"
-            android:exported="true"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
+            android:exported="true" />
         <activity android:name=".activity.CardViewActivity" />
         <activity
             android:name=".activity.MainActivity"

@@ -17,6 +17,7 @@ class CardViewActivity : AppCompatActivity() {
         const val WEIGHT = "WEIGHT"
         const val TYPE1 = "TYPE1"
         const val TYPE2 = "TYPE2"
+        const val ID = "ID"
     }
 
     lateinit var binding: ActivityCardViewBinding
@@ -35,6 +36,7 @@ class CardViewActivity : AppCompatActivity() {
         val weight = intent.getStringExtra(WEIGHT)
         val type1 = intent.getStringExtra(TYPE1)
         val type2 = intent.getStringExtra(TYPE2)
+        val id = intent.getStringExtra(ID)
 
         // Find references in layout
         val cardName = binding.cardNameTextView
@@ -55,6 +57,22 @@ class CardViewActivity : AppCompatActivity() {
         cardWeightTextView.text = weight
         cardType1ImageView.setImageResource(getTypeImage(type1 ?: ""))
         cardType2ImageView.setImageResource(getTypeImage(type2 ?: ""))
+
+        binding.sendCardButton.setOnClickListener{
+            val intent = Intent(Intent(this, SendCardActivity::class.java))
+
+            intent.putExtra(SendCardActivity.IMAGE, image)
+            intent.putExtra(SendCardActivity.NAME, name)
+            intent.putExtra(SendCardActivity.HEIGHT, height)
+            intent.putExtra(SendCardActivity.POKEDEXID, pokedexid)
+            intent.putExtra(SendCardActivity.WEIGHT, weight)
+            intent.putExtra(SendCardActivity.TYPE1, type1)
+            intent.putExtra(SendCardActivity.TYPE2, type2)
+            intent.putExtra(SendCardActivity.ID, id)
+
+            startActivity(intent)
+
+        }
 
         binding.cardViewImageButton.setOnClickListener{
             val intent = Intent(this, CardImageViewActivity::class.java)

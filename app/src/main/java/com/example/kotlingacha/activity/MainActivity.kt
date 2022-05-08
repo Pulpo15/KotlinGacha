@@ -3,6 +3,7 @@ package com.example.kotlingacha.activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Thread.sleep(2000)
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -61,8 +63,10 @@ class MainActivity : AppCompatActivity() {
     //Load data from shared prefs, in the future it will be loaded from db
     private fun loadData(){
         val db = Firebase.firestore
-
-        db.collection(Firebase.auth.currentUser?.displayName ?: "").get()
+        db.collection("users")
+            .document(Firebase.auth.currentUser?.displayName ?: "")
+            .collection("Pokemon")
+            .get()
             .addOnSuccessListener { documents ->
                 for (document in documents){
                     Inventory.inventoryData.add(Inventory(document.get("image").toString(),

@@ -47,6 +47,7 @@ class CustomAdapter(private val context: Context, private val mList: List<Invent
             intent.putExtra(CardViewActivity.WEIGHT, itemsViewModel.weight)
             intent.putExtra(CardViewActivity.TYPE1, itemsViewModel.type1)
             intent.putExtra(CardViewActivity.TYPE2, itemsViewModel.type2)
+            intent.putExtra(CardViewActivity.ID, position)
 
             context.startActivity(intent)
 

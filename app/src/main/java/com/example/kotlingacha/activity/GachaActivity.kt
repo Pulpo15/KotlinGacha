@@ -32,27 +32,8 @@ class GachaActivity : AppCompatActivity() {
         binding = ActivityGachaBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.menuMainActivity.setOnMenuItemClickListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.action_recieve_card -> startActivity(
-                    Intent(this, RecieveCardActivity::class.java)
-                )
-                R.id.action_send_card -> startActivity(
-                    Intent(this, SendCardActivity::class.java)
-                )
-                else -> return@setOnMenuItemClickListener false
-            }
-            true
-        }
-
         binding.getCardButton.setOnClickListener {
-            //Inventory.inventoryData.add(generateCard())
             funGetPokemon()
-        }
-
-        binding.clearMemory.setOnClickListener{
-            clearSharedPreferences()
-            Inventory.inventoryData.clear()
         }
 
         binding.gachaBackButton.setOnClickListener{
@@ -98,16 +79,10 @@ class GachaActivity : AppCompatActivity() {
             "type2" to pkmn.type2
         )
 
-        db.collection(Firebase.auth.currentUser?.displayName ?: "")
+        db.collection("users")
+            .document(Firebase.auth.currentUser?.displayName ?: "")
+            .collection("Pokemon")
             .document(pkmn.name)
             .set(pkmnMap)
-    }
-
-    // Editor only, erase all data
-    private fun clearSharedPreferences(){
-        val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
-        editor.clear()
-        editor.apply()
     }
 }

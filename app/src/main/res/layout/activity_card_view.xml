@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -120,7 +121,7 @@
             android:layout_marginStart="75dp"
             android:layout_marginTop="8dp"
             android:contentDescription="@string/type1"
-            app:layout_constraintBottom_toTopOf="@+id/tradeButton"
+            app:layout_constraintBottom_toTopOf="@+id/sendCardButton"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/pokedexIdTextView"
             app:srcCompat="@drawable/fightingtype"
@@ -133,17 +134,17 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="75dp"
             android:contentDescription="@string/type1"
-            app:layout_constraintBottom_toTopOf="@+id/tradeButton"
+            app:layout_constraintBottom_toTopOf="@+id/sendCardButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/pokedexId"
             app:srcCompat="@drawable/fightingtype"
             tools:ignore="ImageContrastCheck" />
 
         <Button
-            android:id="@+id/tradeButton"
+            android:id="@+id/sendCardButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/wip"
+            android:text="Send Card"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

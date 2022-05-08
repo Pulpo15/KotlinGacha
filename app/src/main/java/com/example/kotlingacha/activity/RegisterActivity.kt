@@ -9,9 +9,11 @@ import android.widget.Toast
 import com.example.kotlingacha.databinding.ActivityRegisterBinding
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.delay
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -37,7 +39,7 @@ class RegisterActivity : AppCompatActivity() {
         binding.registerButton.setOnClickListener{
             val email = binding.emailTextInput.text.toString()
             val password = binding.passwordRegisterTextInput.text.toString()
-            val name = binding.nameTextInput.text.toString()
+            val name = binding.nameTextInput.text.toString().lowercase()
 
             if (email.isEmpty() || password.isEmpty() || password != binding.repeatPasswordTextInput.text.toString())
                 return@setOnClickListener Toast.makeText(this, "Check data", Toast.LENGTH_SHORT).show()
@@ -68,7 +70,9 @@ class RegisterActivity : AppCompatActivity() {
                 "type2" to ""
             )
 
-            db.collection(name)
+            db.collection("users")
+                .document(name)
+                .collection("Pokemon")
                 .document("Pikachu")
                 .set(pkmn)
 
@@ -81,8 +85,9 @@ class RegisterActivity : AppCompatActivity() {
                         displayName = name
                     }
                     user?.updateProfile(profileUpdates)
-
                     setResult(Activity.RESULT_OK)
+                    Toast.makeText(this, "Logged with user " +
+                            "${Firebase.auth.currentUser?.displayName}", Toast.LENGTH_SHORT).show()
                     startActivity(Intent(this, MainActivity::class.java))
                     finish()
                 }.addOnFailureListener{
