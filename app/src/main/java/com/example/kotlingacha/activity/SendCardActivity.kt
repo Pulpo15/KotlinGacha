@@ -58,7 +58,7 @@ class SendCardActivity : AppCompatActivity() {
                         .document(userName)
                         .collection("Pokemon")
                         .document(cardNameUpper)
-                        .set((mapOf(
+                        .update((mapOf(
                             "image" to image,
                             "name" to cardNameUpper,
                             "height" to height,
@@ -67,6 +67,9 @@ class SendCardActivity : AppCompatActivity() {
                             "type1" to type1,
                             "type2" to type2
                         )))
+                        .addOnFailureListener{
+                            Toast.makeText(this, "User doesn't exist", Toast.LENGTH_SHORT).show()
+                        }
                         .addOnSuccessListener {
                             db.collection("users")
                                 .document(Firebase.auth.currentUser?.displayName ?: "")
@@ -87,10 +90,10 @@ class SendCardActivity : AppCompatActivity() {
                                             document.get("pokedexid").toString(), document.get("weight").toString(),
                                             document.get("type1").toString(), document.get("type2").toString()))
                                     }
+                                    finish()
                                 }
 
                             Toast.makeText(this, "Sent ${cardNameUpper} to ${userName}", Toast.LENGTH_SHORT).show()
-                            finish()
                         }
                         .addOnFailureListener {Toast.makeText(this, "Error sending card", Toast.LENGTH_SHORT).show()}
                 })

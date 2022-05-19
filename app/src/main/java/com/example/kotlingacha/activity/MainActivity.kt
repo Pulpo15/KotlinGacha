@@ -19,24 +19,18 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
 
+    // ArrayList of class ItemsViewModel
+//    val data = ArrayList<Inventory>()
+
+    // This will pass the ArrayList to our Adapter
+    val adapter = CustomAdapter(this)
+
     override fun onCreate(savedInstanceState: Bundle?) {
-        Thread.sleep(2000)
+        //Thread.sleep(2000)
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        loadData()
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-        // Button to access Gacha activity
-        binding.gachaButton.setOnClickListener {
-            val intent = Intent(this, GachaActivity::class.java)
-            startActivity(intent)
-        }
 
         // Getting the recyclerview by its id
         val recyclerview = binding.recyclerview
@@ -44,24 +38,36 @@ class MainActivity : AppCompatActivity() {
         // This creates a vertical layout Manager
         recyclerview.layoutManager = LinearLayoutManager(this)
 
-        // ArrayList of class ItemsViewModel
-        val data = ArrayList<Inventory>()
-
-        // This loop will create all the cards on the list
-        Inventory.inventoryData.forEachIndexed{ _, elem ->
-            data.add(Inventory(elem.image, elem.name, elem.height, elem.pokedexid, elem.weight,
-                elem.type1, elem.type2))
-        }
-
-        // This will pass the ArrayList to our Adapter
-        val adapter = CustomAdapter(this, data)
-
         // Setting the Adapter with the recyclerview
         recyclerview.adapter = adapter
+
+        loadData {
+            adapter.notifyDataSetChanged()
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        adapter.notifyDataSetChanged()
+
+        // Button to access Gacha activity
+        binding.gachaButton.setOnClickListener {
+            val intent = Intent(this, GachaActivity::class.java)
+            startActivity(intent)
+        }
+
+
+
+        // This loop will create all the cards on the list
+//        Inventory.inventoryData.forEachIndexed{ _, elem ->
+//            data.add(Inventory(elem.image, elem.name, elem.height, elem.pokedexid, elem.weight,
+//                elem.type1, elem.type2))
+//        }
     }
 
     //Load data from shared prefs, in the future it will be loaded from db
-    private fun loadData(){
+    private fun loadData(onLoaded : () -> Unit){
         val db = Firebase.firestore
         db.collection("users")
             .document(Firebase.auth.currentUser?.displayName ?: "")
@@ -74,6 +80,7 @@ class MainActivity : AppCompatActivity() {
                         document.get("pokedexid").toString(), document.get("weight").toString(),
                         document.get("type1").toString(), document.get("type2").toString()))
                 }
+                onLoaded()
             }
     }
 }

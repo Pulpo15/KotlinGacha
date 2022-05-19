@@ -13,7 +13,7 @@ import com.example.kotlingacha.activity.CardViewActivity
 import com.example.kotlingacha.obj.Inventory
 import com.squareup.picasso.Picasso
 
-class CustomAdapter(private val context: Context, private val mList: List<Inventory>) : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
+class CustomAdapter(private val context: Context) : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 
     // create new views
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -28,7 +28,7 @@ class CustomAdapter(private val context: Context, private val mList: List<Invent
     // binds the list items to a view
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        val itemsViewModel = mList[position]
+        val itemsViewModel = Inventory.inventoryData[position]
 
         Picasso.get()
             .load(itemsViewModel.image)
@@ -57,7 +57,7 @@ class CustomAdapter(private val context: Context, private val mList: List<Invent
 
     // return the number of the items in the list
     override fun getItemCount(): Int {
-        return mList.size
+        return Inventory.inventoryData.size
     }
 
     // Holds the views for adding it to image and text
