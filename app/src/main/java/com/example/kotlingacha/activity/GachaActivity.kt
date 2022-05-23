@@ -35,7 +35,6 @@ class GachaActivity : AppCompatActivity() {
         binding.getCardButton.setOnClickListener {
             funGetPokemon()
         }
-
         binding.gachaBackButton.setOnClickListener{
             finish()
         }
@@ -62,7 +61,6 @@ class GachaActivity : AppCompatActivity() {
                 Toast.makeText(this@GachaActivity, t.toString(), Toast.LENGTH_SHORT).show()
             }
         })
-
     }
 
     // Save inventoryData to file, put first the size of the list

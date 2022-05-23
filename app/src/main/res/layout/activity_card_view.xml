@@ -22,10 +22,9 @@
             android:id="@+id/cardViewImageButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/electrictype"
+            android:background="@drawable/cesped"
             android:contentDescription="@string/card_image"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_launcher_foreground"
             tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck" />
 
         <TextView

@@ -19,6 +19,7 @@
             android:layout_width="256dp"
             android:layout_height="256dp"
             android:layout_marginTop="10dp"
+            android:background="@drawable/cesped"
             android:contentDescription="@string/card_image"
             tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck" />
 

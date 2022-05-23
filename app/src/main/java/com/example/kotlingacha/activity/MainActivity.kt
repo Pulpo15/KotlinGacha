@@ -1,10 +1,13 @@
 package com.example.kotlingacha.activity
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isGone
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlingacha.adapter.CustomAdapter
@@ -19,18 +22,25 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
 
+    companion object {
+        const val NAME = "NAME"
+    }
+
     // ArrayList of class ItemsViewModel
 //    val data = ArrayList<Inventory>()
 
     // This will pass the ArrayList to our Adapter
     val adapter = CustomAdapter(this)
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
         //Thread.sleep(2000)
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.progressBarRV.isGone = false
 
         // Getting the recyclerview by its id
         val recyclerview = binding.recyclerview
@@ -43,9 +53,14 @@ class MainActivity : AppCompatActivity() {
 
         loadData {
             adapter.notifyDataSetChanged()
+            if (Inventory.inventoryData.isEmpty())
+                loadData {
+                    adapter.notifyDataSetChanged()
+                }
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onResume() {
         super.onResume()
 
@@ -56,21 +71,13 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, GachaActivity::class.java)
             startActivity(intent)
         }
-
-
-
-        // This loop will create all the cards on the list
-//        Inventory.inventoryData.forEachIndexed{ _, elem ->
-//            data.add(Inventory(elem.image, elem.name, elem.height, elem.pokedexid, elem.weight,
-//                elem.type1, elem.type2))
-//        }
     }
 
     //Load data from shared prefs, in the future it will be loaded from db
     private fun loadData(onLoaded : () -> Unit){
         val db = Firebase.firestore
         db.collection("users")
-            .document(Firebase.auth.currentUser?.displayName ?: "")
+            .document(Firebase.auth.currentUser?.displayName ?: NAME)
             .collection("Pokemon")
             .get()
             .addOnSuccessListener { documents ->
@@ -81,6 +88,7 @@ class MainActivity : AppCompatActivity() {
                         document.get("type1").toString(), document.get("type2").toString()))
                 }
                 onLoaded()
+                binding.progressBarRV.isGone = true
             }
     }
 }
