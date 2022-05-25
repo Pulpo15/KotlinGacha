@@ -4,14 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.particles.ui.main.MainActivity">
     <item
-        android:id="@+id/action_send_card"
-        android:orderInCategory="100"
-        app:showAsAction="never"
-        android:title="@string/send_card" />
-
-    <item
-        android:id="@+id/action_recieve_card"
-        android:orderInCategory="100"
-        android:title="@string/recieve_card"
- />
+        android:id="@+id/refresh"
+        android:icon="@drawable/reload"
+        android:title="@string/refresh"
+        app:showAsAction="always"/>
 </menu>
